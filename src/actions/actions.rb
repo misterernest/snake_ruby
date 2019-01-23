@@ -26,7 +26,22 @@ module Actions
     end
   end
 
-  def position_is_valid
-    # ...
+  def position_is_valid?(state, position)
+    is_invalid =  postion.row >= state.grid.rows || position.row <= 0 ||
+                  postion.col >= state.grid.cols || position.cols <= 0
+
+    return false if is_invalid
+
+    !(state.snake.positions.include? postion)
+  end
+
+  def move_snake_to(state, next_position)
+    new_positions = [next_position] + state.snake.positions[0...-1]
+    state.snake.positions = new_positions
+    state
+  end
+
+  def end_game(state)
+    state.game_finished = true
   end
 end
