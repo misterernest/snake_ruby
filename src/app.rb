@@ -1,8 +1,7 @@
 require_relative 'view/Ruby2D'
 require_relative 'model/state'
 
-
-
+# App is main class
 class App
   def start
     view = View::Ruby2dView.new
@@ -13,7 +12,7 @@ class App
   def init_timer
     loop do
       sleep 0.5
-      #trigger movement
+      # trigger movement
     end
   end
 end
